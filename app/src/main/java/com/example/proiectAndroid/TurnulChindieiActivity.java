@@ -1,0 +1,93 @@
+package com.example.proiectAndroid;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.app.DatePickerDialog;
+import android.app.TimePickerDialog;
+import android.content.Intent;
+import android.os.Bundle;
+import android.text.InputType;
+import android.view.View;
+import android.widget.Button;
+import android.widget.DatePicker;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.TimePicker;
+import android.widget.Toast;
+
+import java.util.Calendar;
+
+public class TurnulChindieiActivity extends AppCompatActivity {
+
+    TimePickerDialog timePicker;
+    DatePickerDialog datePicker;
+    EditText editTextDate;
+    EditText editTextTime;
+    Button btnGet;
+    TextView tvw;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_turnul_chindiei);
+
+        tvw = (TextView) findViewById(R.id.textViewDate);
+        editTextDate = (EditText) findViewById(R.id.editTextDate);
+        editTextTime = (EditText) findViewById(R.id.editTextTime);
+
+        editTextDate.setInputType(InputType.TYPE_NULL);
+        editTextTime.setInputType(InputType.TYPE_NULL);
+        editTextDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final Calendar cldr = Calendar.getInstance();
+                int day = cldr.get(Calendar.DAY_OF_MONTH);
+                int month = cldr.get(Calendar.MONTH);
+                int year = cldr.get(Calendar.YEAR);
+                // date picker dialog
+                datePicker = new DatePickerDialog(TurnulChindieiActivity.this,
+                        new DatePickerDialog.OnDateSetListener() {
+                            @Override
+                            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                                editTextDate.setText(dayOfMonth + "/" + (monthOfYear + 1) + "/" + year);
+                            }
+                        }, year, month, day);
+                datePicker.show();
+            }
+        });
+
+        editTextTime.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                    final Calendar cldr = Calendar.getInstance();
+                    int hour = cldr.get(Calendar.HOUR_OF_DAY);
+                    int minutes = cldr.get(Calendar.MINUTE);
+
+                        tvw.setText("Selected Date: " + editTextDate.getText());
+
+                        timePicker = new TimePickerDialog(TurnulChindieiActivity.this,
+                                new TimePickerDialog.OnTimeSetListener() {
+                                    @Override
+                                    public void onTimeSet(TimePicker tp, int sHour, int sMinute) {
+                                        editTextTime.setText(sHour + ":" + sMinute);
+                                    }
+                                }, hour, minutes, true);
+                        timePicker.show();
+            }
+        });
+    }
+
+    public void showLocation(View view){
+
+       // final String locationX="44.932553667977594";
+       // final String locationY="25.458182684544926";
+        //Intent intent = new Intent(this,LocationActivity.class);
+        //intent.putExtra("location_x",locationX);
+        //intent.putExtra("location_y",locationY);
+       // startActivity(intent);
+        Intent intent = new Intent(this,LocationActivity.class);
+        startActivity(intent);
+    }
+}
+
