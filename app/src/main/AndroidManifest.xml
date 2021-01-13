@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Proiect">
-        <activity android:name=".MapActivity"></activity>
+        <activity android:name=".MuzeuActivity"></activity>
+        <activity android:name=".LoginActivity" />
+        <activity android:name=".MapActivity" />
         <activity android:name=".AppointmentActivity" /> <!-- <activity -->
         <!-- android:name=".ui.login.LoginActivity" -->
         <!-- android:label="@string/title_activity_login"></activity> -->
