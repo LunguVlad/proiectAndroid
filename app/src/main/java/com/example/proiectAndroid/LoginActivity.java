@@ -7,6 +7,9 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
+
+import java.util.List;
 
 import Models.Actions.UserActions;
 import Models.AppDatabase;
@@ -54,6 +57,22 @@ public class LoginActivity extends AppCompatActivity {
     }
 
 
+    private static class GetAllUsersAsyncTask extends android.os.AsyncTask<Void, Void, List<User>> {
+
+        private AppDatabase userDB;
+        List<User> users;
+
+        GetAllUsersAsyncTask(AppDatabase userDB) {
+            this.userDB = userDB;
+        }
+
+        @Override
+        protected List<User> doInBackground(Void... voids) {
+            return userDB.userDao().getAll();
+        }
+    }
+
+
 
     public void handleLoginButton(){
 
@@ -72,6 +91,9 @@ public class LoginActivity extends AppCompatActivity {
         user.setEmail(email);
         user.setPassword(password);
        new InsertUserAsyncTask(user,userDB);
+       new GetAllUsersAsyncTask(userDB);
+
+
     }
 
 
