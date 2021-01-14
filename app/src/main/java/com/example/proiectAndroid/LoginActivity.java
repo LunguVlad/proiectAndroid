@@ -6,6 +6,7 @@ import androidx.room.Room;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -107,6 +108,7 @@ public class LoginActivity extends AppCompatActivity {
             if(user!=null){
                 System.out.println("POSTEXEC");
                 Intent it = new Intent(getApplicationContext(),IntroActivity.class);
+                it.putExtra("logged_user", (Parcelable) user);
                 startActivity(it);
             }else{
                 System.out.println("1234");
@@ -125,7 +127,7 @@ public class LoginActivity extends AppCompatActivity {
         User user = new User();
         user.setEmail(email);
         user.setPassword(password);
-        user.setAppId(57);
+
 
         new getUserByEmail(userActions,email).execute();
     }
@@ -144,7 +146,7 @@ public class LoginActivity extends AppCompatActivity {
         User user = new User();
         user.setEmail(email);
         user.setPassword(password);
-        user.setAppId(57);
+
 
         System.out.println(user.toString());
 

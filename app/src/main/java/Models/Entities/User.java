@@ -1,16 +1,23 @@
 package Models.Entities;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
 import androidx.room.Index;
 import androidx.room.PrimaryKey;
 
+import org.jetbrains.annotations.NotNull;
 
-//@Entity(indices = {@Index(value = {"appId"},
-//        unique = true)})
-@Entity
-public class User {
+import io.reactivex.internal.operators.single.SingleDefer;
+
+
+
+
+@Entity(indices = {@Index(value = "email",unique = true)})
+public class User implements Parcelable {
 
     @PrimaryKey(autoGenerate = true)
     private int userId;
@@ -21,9 +28,31 @@ public class User {
     @ColumnInfo(name = "password")
     private String password;
 
-    @ColumnInfo(name = "appId")
-    private int appId;
 
+
+    public User(){
+
+    }
+
+
+    protected User(Parcel in) {
+        userId = in.readInt();
+        email = in.readString();
+        password = in.readString();
+
+    }
+
+    public static final Creator<User> CREATOR = new Creator<User>() {
+        @Override
+        public User createFromParcel(Parcel in) {
+            return new User(in);
+        }
+
+        @Override
+        public User[] newArray(int size) {
+            return new User[size];
+        }
+    };
 
     public int getUserId() {
         return userId;
@@ -49,13 +78,9 @@ public class User {
         this.password = password;
     }
 
-    public int getAppId() {
-        return appId;
-    }
 
-    public void setAppId(int appId) {
-        this.appId = appId;
-    }
+
+
 
     @Override
     public String toString() {
@@ -63,7 +88,18 @@ public class User {
                 "userId=" + userId +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
-                ", appId=" + appId +
                 '}';
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+       dest.writeInt(userId);
+       dest.writeString(email);
+       dest.writeString(password);
     }
 }

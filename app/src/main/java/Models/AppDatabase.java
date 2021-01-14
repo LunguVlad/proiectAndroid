@@ -11,10 +11,10 @@ import Models.DAOS.UserDAO;
 import Models.Entities.Appointment;
 import Models.Entities.User;
 
-@Database(entities = {User.class},version = 1)
+@Database(entities = {User.class, Appointment.class},version = 1)
 abstract public class AppDatabase extends RoomDatabase {
     abstract public UserDAO userDao();
-    //public abstract AppointmentDAO appointmentDao();
+    public abstract AppointmentDAO appointmentDao();
 }
 
 

@@ -10,10 +10,10 @@ import androidx.room.Query;
 import java.util.List;
 
 import Models.Entities.Appointment;
+import Models.Entities.User;
 
 
-
-    @Dao
+@Dao
     public interface AppointmentDAO {
         @Query("SELECT * FROM appointment")
         List<Appointment> getAll();
@@ -23,6 +23,9 @@ import Models.Entities.Appointment;
 
         @Insert
         void insertAll(Appointment... appointments);
+
+    @Insert(entity = Appointment.class)
+    void insert(Appointment appointment);
 
         @Delete
         void delete(Appointment appointment);
