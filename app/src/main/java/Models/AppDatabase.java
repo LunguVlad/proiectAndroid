@@ -12,7 +12,9 @@ import Models.Entities.User;
 @Database(entities = {User.class, Appointment.class}, version = 1)
 public abstract class AppDatabase extends RoomDatabase {
     public abstract UserDAO userDao();
-    public abstract AppointmentDAO appointmentDAO();
+    public abstract AppointmentDAO appointmentDao();
 }
+
+
 
 

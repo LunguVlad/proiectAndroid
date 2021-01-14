@@ -2,14 +2,16 @@ package Models.Entities;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
 
+@Entity(foreignKeys = @ForeignKey(entity = User.class,
+        parentColumns = "appId",
+        childColumns = "appointmentId",
+        onDelete = ForeignKey.NO_ACTION))
 
-
-
-@Entity
 public class Appointment {
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
     public int appointmentId;
 
     @ColumnInfo(name = "date")
@@ -17,4 +19,6 @@ public class Appointment {
 
     @ColumnInfo(name = "time")
     public String time;
+
+
 }

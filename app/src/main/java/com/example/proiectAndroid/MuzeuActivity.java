@@ -14,9 +14,6 @@ public class MuzeuActivity extends AppCompatActivity {
         setContentView(R.layout.activity_muzeu);
     }
 
-    public void showTimePickerDialog(View v) {
-        DialogFragment newFragment = new TimePickerFragment();
-        newFragment.show(getSupportFragmentManager(), "timePicker");
-    }
+
 }
 
