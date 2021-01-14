@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.InputType;
 import android.view.View;
@@ -16,6 +17,8 @@ import android.widget.TimePicker;
 
 import java.util.Calendar;
 
+import Models.Actions.AppointmentActions;
+import Models.Entities.Appointment;
 import Models.Entities.User;
 
 public class MuzeuIstorieActivity extends AppCompatActivity {
@@ -28,12 +31,15 @@ public class MuzeuIstorieActivity extends AppCompatActivity {
     Button btnGet;
     TextView tvw;
     private User user;
+    private AppointmentActions appointmentActions;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_muzeu_istorie);
+
+        appointmentActions = new AppointmentActions(this);
 
         Intent it =  getIntent();
         Bundle extras =  it.getExtras();
@@ -85,5 +91,49 @@ public class MuzeuIstorieActivity extends AppCompatActivity {
                 timePicker.show();
             }
         });
+    }
+
+    private  class InsertAppointmentAsyncTask extends AsyncTask<Void, Void, Integer> {
+
+
+
+        private Appointment appointment;
+        private AppointmentActions appointmentActions;
+
+        public InsertAppointmentAsyncTask(Appointment appointment, AppointmentActions appointmentActions ) {
+
+            this.appointment = appointment;
+            this.appointmentActions = appointmentActions ;
+        }
+
+        @Override
+        protected Integer doInBackground(Void... params) {
+            try {
+                appointmentActions.insertAppointment(appointment);
+            }catch (Exception ex){
+                System.out.println(ex.getMessage());
+            }
+            return 0;
+        }
+
+        @Override
+        protected void onPostExecute(Integer agentsCount) {
+            System.out.println("Appointment inserted!");
+        }
+    }
+
+
+
+    public void handleCreateAppointment(View view){
+        EditText editTime = (EditText) findViewById(R.id.editTextTime);
+        String time = editTime.getText().toString();
+
+        EditText editDate = (EditText) findViewById(R.id.editTextDate);
+        String date = editDate.getText().toString();
+
+        Appointment appointment = new Appointment(date,time,user.getEmail());
+
+        new InsertAppointmentAsyncTask(appointment,appointmentActions).execute();
+
     }
 }
