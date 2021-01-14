@@ -13,15 +13,16 @@ import Models.Entities.User;
 
 public class UserActions {
 
-    private String DB_NAME = "proiect-android";
+    private final String DB_NAME = "proiectdatabase";
 
     private AppDatabase userDB;
+    private UserDAO userDAO;
 
     public UserActions(Context context) {
         userDB = Room.databaseBuilder(context, AppDatabase.class, DB_NAME).build();
+        userDAO = userDB.userDao();
     }
 
-   public UserDAO userDAO = userDB.userDao();
 
     public List<User> gettAllUsers(){
          List<User> users = userDAO.getAll();
@@ -29,7 +30,12 @@ public class UserActions {
     }
 
     public void insertUser(User user){
+        System.out.println("insertUser");
         userDAO.insert(user);
+    }
+
+    public User getUserByEmail(String email){
+        return userDAO.getUserByEmail(email);
     }
 
 }

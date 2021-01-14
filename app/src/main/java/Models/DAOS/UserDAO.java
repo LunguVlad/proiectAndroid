@@ -3,6 +3,7 @@ package Models.DAOS;
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
+import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 
 import java.util.List;
@@ -17,12 +18,15 @@ public interface UserDAO {
     @Query("SELECT * FROM user WHERE userId IN (:userIds)")
     List<User> loadAllByIds(int[] userIds);
 
-    @Insert
-    void insertAll(User... users);
+    @Query("SELECT * FROM user WHERE email IN (:email)")
+    User getUserByEmail(String email);
 
-    @Insert
+//    @Insert
+//    void insertAll(User... users);
+
+    @Insert(entity = User.class)
     void insert(User user);
 
-    @Delete
-    void delete(User user);
+//    @Delete
+//    void delete(User user);
 }

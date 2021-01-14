@@ -7,41 +7,63 @@ import androidx.room.Index;
 import androidx.room.PrimaryKey;
 
 
-@Entity(indices = {@Index(value = {"appId"},
-        unique = true)})
+//@Entity(indices = {@Index(value = {"appId"},
+//        unique = true)})
+@Entity
 public class User {
 
     @PrimaryKey(autoGenerate = true)
-    public int userId;
+    private int userId;
 
     @ColumnInfo(name = "email")
-    public String email;
+    private String email;
 
     @ColumnInfo(name = "password")
-    public String password;
+    private String password;
 
     @ColumnInfo(name = "appId")
-    public int appId;
+    private int appId;
 
 
-    public int getId() {
+    public int getUserId() {
         return userId;
     }
 
-    public void setPassword(String password ){
-        this.password = password;
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
-    public void setEmail(String email){
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
         this.email = email;
     }
-
 
     public String getPassword() {
         return password;
     }
 
-    public String getEmail(){
-        return  this.email;
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public int getAppId() {
+        return appId;
+    }
+
+    public void setAppId(int appId) {
+        this.appId = appId;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "userId=" + userId +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", appId=" + appId +
+                '}';
     }
 }
