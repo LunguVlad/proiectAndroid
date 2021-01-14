@@ -1,6 +1,7 @@
 package com.example.proiectAndroid;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.room.Room;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
@@ -17,7 +18,11 @@ import android.widget.Toast;
 
 import java.util.Calendar;
 
+import Models.AppDatabase;
+
 public class TurnulChindieiActivity extends AppCompatActivity {
+
+
 
     TimePickerDialog timePicker;
     DatePickerDialog datePicker;
@@ -25,6 +30,8 @@ public class TurnulChindieiActivity extends AppCompatActivity {
     EditText editTextTime;
     Button btnGet;
     TextView tvw;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
