@@ -1,6 +1,7 @@
 package com.example.proiectAndroid;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.room.Database;
 import androidx.room.Room;
 
 import android.content.Context;
@@ -14,6 +15,9 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Toast;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.util.List;
 
 import Models.Actions.UserActions;
@@ -24,6 +28,8 @@ import Models.Entities.User;
 public class LoginActivity extends AppCompatActivity {
 
     UserActions userActions;
+    protected  User user;
+
 
     private AppDatabase userDB;
     @Override
@@ -60,7 +66,7 @@ public class LoginActivity extends AppCompatActivity {
         startActivity(it);
     }
 
-    private  class InsertUserAsyncTask extends AsyncTask<Void, Void, Integer> {
+    private  class InsertUserAsyncTask extends AsyncTask<Void, Void, User> {
 
         //Prevent leak
 
@@ -74,20 +80,25 @@ public class LoginActivity extends AppCompatActivity {
         }
 
         @Override
-        protected Integer doInBackground(Void... params) {
+        protected User doInBackground(Void... params) {
 //            UserDAO userDAO = userDB.userDao();
 //            userDAO.insert(this.user);
             try {
                 userActions.insertUser(user);
+                return userActions.getUserByEmail(user.getEmail());
             }catch (Exception ex){
                 System.out.println(ex.getMessage());
             }
-            return 0;
+            return null;
         }
 
         @Override
-        protected void onPostExecute(Integer agentsCount) {
-            System.out.println("User inserted!");
+        protected void onPostExecute(User user){
+            FirebaseDatabase rootNode = FirebaseDatabase.getInstance("https://proiectdam-2b128-default-rtdb.europe-west1.firebasedatabase.app/");
+            DatabaseReference reference = rootNode.getReference("Users");
+
+            reference.child(String.valueOf(user.getUserId())).child("email").setValue(user.getEmail());
+            reference.child(String.valueOf(user.getUserId())).child("password").setValue(user.getPassword());
         }
     }
 
@@ -113,6 +124,7 @@ public class LoginActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(User user) {
             if(user!=null){
+                LoginActivity:user = user;
                 System.out.println("POSTEXEC");
                 Intent it = new Intent(getApplicationContext(),IntroActivity.class);
                 it.putExtra("logged_user", (Parcelable) user);
@@ -146,9 +158,14 @@ public class LoginActivity extends AppCompatActivity {
 
 
 
+
         User user = new User();
         user.setEmail(email);
         user.setPassword(password);
+
+
+       // mDatabase.child("1").child("email").setValue(user.getEmail());
+
 
 
         new getUserByEmail(userActions,email).execute();
@@ -168,6 +185,13 @@ public class LoginActivity extends AppCompatActivity {
         User user = new User();
         user.setEmail(email);
         user.setPassword(password);
+
+
+
+
+
+
+
 
 
         System.out.println(user.toString());

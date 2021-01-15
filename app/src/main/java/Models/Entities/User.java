@@ -5,15 +5,8 @@ import android.os.Parcelable;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
-import androidx.room.ForeignKey;
 import androidx.room.Index;
 import androidx.room.PrimaryKey;
-
-import org.jetbrains.annotations.NotNull;
-
-import io.reactivex.internal.operators.single.SingleDefer;
-
-
 
 
 @Entity(indices = {@Index(value = "email",unique = true)})
@@ -54,7 +47,7 @@ public class User implements Parcelable {
         }
     };
 
-    public int getUserId() {
+    public Integer getUserId() {
         return userId;
     }
 
