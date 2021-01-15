@@ -3,12 +3,15 @@ package com.example.proiectAndroid;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.room.Room;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.Toast;
 
 import java.util.List;
@@ -33,6 +36,28 @@ public class LoginActivity extends AppCompatActivity {
         // userDB = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "projectdatabase").build();
 
 
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        try{
+            SharedPreferences sharedPreferences = getApplicationContext().getSharedPreferences(getString(R.string.shared_pref),Context.MODE_PRIVATE);
+            Integer fontSize = sharedPreferences.getInt(getString(R.string.font_size),R.integer.font_size);
+            String email = sharedPreferences.getString(getString(R.string.email_saved),"");
+            EditText editTextEmail = (EditText) findViewById(R.id.editTextTextEmailAddress);
+            editTextEmail.setText(email);
+
+
+        }catch (Exception ex){
+            ex.printStackTrace();
+        }
+    }
+
+    public void handleSettingsButton(View view) {
+        Intent it = new Intent(this,SettingsActivity.class);
+        startActivity(it);
     }
 
     private  class InsertUserAsyncTask extends AsyncTask<Void, Void, Integer> {
@@ -101,11 +126,26 @@ public class LoginActivity extends AppCompatActivity {
 
 
     public void handleLoginButton(View view){
+
         EditText editTextEmail = (EditText) findViewById(R.id.editTextTextEmailAddress);
         EditText editTextPassowrd = (EditText) findViewById(R.id.editTextTextPassword);
 
         String email = editTextEmail.getText().toString();
         String password = editTextPassowrd.getText().toString();
+
+
+        RadioButton radioButton = (RadioButton) findViewById(R.id.radioButton2);
+        if(radioButton.isChecked()){
+            SharedPreferences sharedPreferences = getApplicationContext().getSharedPreferences("shared-preferences",Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putString(getString(R.string.email_saved),email);
+            editor.apply();
+        }
+
+
+
+
+
         User user = new User();
         user.setEmail(email);
         user.setPassword(password);

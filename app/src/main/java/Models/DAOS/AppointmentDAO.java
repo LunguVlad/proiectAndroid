@@ -18,14 +18,14 @@ import Models.Entities.User;
         @Query("SELECT * FROM appointment")
         List<Appointment> getAll();
 
-        @Query("SELECT * FROM appointment WHERE appointmentId IN (:appointmentIds)")
-        List<Appointment> loadAllByIds(int[] appointmentIds);
+        @Query("SELECT * FROM appointment WHERE userEmail IN (:userEmail)")
+        List<Appointment> getAllByEmail(String userEmail);
 
         @Insert
         void insertAll(Appointment... appointments);
 
-    @Insert(entity = Appointment.class)
-    void insert(Appointment appointment);
+        @Insert(entity = Appointment.class)
+        void insert(Appointment appointment);
 
         @Delete
         void delete(Appointment appointment);

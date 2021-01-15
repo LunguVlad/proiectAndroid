@@ -35,6 +35,11 @@ public class AppointmentActions {
         appointmentDAO.insert(appointment);
     }
 
+    public List<Appointment> getAppointmentsByEmail(String email){
+        List<Appointment> list =  appointmentDAO.getAllByEmail(email);
+        return list;
+    }
+
 
 }
 

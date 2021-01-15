@@ -72,4 +72,15 @@ public class Appointment {
         this.userEmail = userEmail;
         this.obiectiv = obiectiv;
     }
+
+    @Override
+    public String toString() {
+        return "Appointment{" +
+                "appointmentId=" + appointmentId +
+                ", date='" + date + '\'' +
+                ", time='" + time + '\'' +
+                ", userEmail='" + userEmail + '\'' +
+                ", obiectiv='" + obiectiv + '\'' +
+                '}';
+    }
 }
