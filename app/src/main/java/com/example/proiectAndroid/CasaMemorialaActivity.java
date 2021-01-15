@@ -33,6 +33,7 @@ public class CasaMemorialaActivity extends AppCompatActivity {
     private User user;
     AppointmentActions appointmentActions;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -128,14 +129,14 @@ public class CasaMemorialaActivity extends AppCompatActivity {
 
 
 
-    public void handleCreateAppointment(View view){
+    public void handleCreateAppointmentCasa(View view){
         EditText editTime = (EditText) findViewById(R.id.editTextTime);
         String time = editTime.getText().toString();
 
         EditText editDate = (EditText) findViewById(R.id.editTextDate);
         String date = editDate.getText().toString();
 
-        Appointment appointment = new Appointment(date,time,user.getEmail());
+        Appointment appointment = new Appointment(date,time,user.getEmail(),"Casa Memoriala");
 
         new InsertAppointmentAsyncTask(appointment,appointmentActions).execute();
 

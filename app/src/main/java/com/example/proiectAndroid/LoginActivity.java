@@ -35,7 +35,7 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
-    private static class InsertUserAsyncTask extends AsyncTask<Void, Void, Integer> {
+    private  class InsertUserAsyncTask extends AsyncTask<Void, Void, Integer> {
 
         //Prevent leak
 
@@ -67,24 +67,6 @@ public class LoginActivity extends AppCompatActivity {
     }
 
 
-    private class GetAllUsersAsyncTask extends android.os.AsyncTask<Void, Void, List<User>> {
-
-        private UserActions userActions;
-
-        GetAllUsersAsyncTask(UserActions userActions) {
-            this.userActions = userActions;
-        }
-
-        @Override
-        protected List<User> doInBackground(Void... voids) {
-            return userActions.gettAllUsers();
-        }
-
-        @Override
-        protected void onPostExecute(List<User> users) {
-            System.out.println();
-        }
-    }
 
     private class getUserByEmail extends android.os.AsyncTask<Void, Void, User>{
 

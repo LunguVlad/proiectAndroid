@@ -60,7 +60,7 @@
             android:layout_width="match_parent"
             android:layout_height="700px"
             android:orientation="vertical"
-            android:onClick="turnClick">
+            android:onClick="casaClick">
 
             <TextView
                 android:layout_width="match_parent"

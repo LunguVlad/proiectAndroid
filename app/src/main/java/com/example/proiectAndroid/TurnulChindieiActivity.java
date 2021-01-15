@@ -17,7 +17,12 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import com.example.proiectAndroid.ParserJSON.ParseJson;
+
+import org.w3c.dom.Text;
+
 import java.util.Calendar;
+import java.util.List;
 
 import Models.Actions.AppointmentActions;
 import Models.Actions.UserActions;
@@ -28,7 +33,7 @@ import Models.Entities.User;
 public class TurnulChindieiActivity extends AppCompatActivity {
 
 
-
+     String obiectv = "Turnul Chindiei";
     TimePickerDialog timePicker;
     DatePickerDialog datePicker;
     EditText editTextDate;
@@ -37,6 +42,7 @@ public class TurnulChindieiActivity extends AppCompatActivity {
     TextView tvw;
     User user;
     AppointmentActions appointmentActions;
+
 
 
     @Override
@@ -74,6 +80,10 @@ public class TurnulChindieiActivity extends AppCompatActivity {
                         }, year, month, day);
                 datePicker.show();
             }
+
+
+
+
         });
 
         editTextTime.setOnClickListener(new View.OnClickListener() {
@@ -96,6 +106,18 @@ public class TurnulChindieiActivity extends AppCompatActivity {
                         timePicker.show();
             }
         });
+
+        ParseJson parser = new ParseJson(){
+            @Override
+            protected void onPostExecute(List<Double> doubles) {
+                TextView viewTemp = (TextView) findViewById(R.id.textViewTemp);
+                StringBuilder builder = new StringBuilder();
+                builder.append("Minima: ").append(doubles.get(0)).append("Maxima: ").append(doubles.get(1));
+                viewTemp.setText(builder.toString());
+            }
+        };
+
+        parser.execute("https://dataservice.accuweather.com/forecasts/v1/daily/1day/287430?apikey=NSboWDJTJXq8GXZTHmG9Q0tJYxx27y5k&metric=true");
     }
 
     private  class InsertAppointmentAsyncTask extends AsyncTask<Void, Void, Integer> {
@@ -139,9 +161,12 @@ public class TurnulChindieiActivity extends AppCompatActivity {
         EditText editDate = (EditText) findViewById(R.id.editTextDate);
         String date = editDate.getText().toString();
 
-        Appointment appointment = new Appointment(date,time,user.getEmail());
+
+        Appointment appointment = new Appointment(date,time,user.getEmail(),obiectv);
 
         new InsertAppointmentAsyncTask(appointment,appointmentActions).execute();
+
+
 
     }
 

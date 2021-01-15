@@ -9,13 +9,12 @@ import android.view.View;
 import Models.Entities.User;
 
 public class IntroActivity extends AppCompatActivity {
-
-    //Atractii:
-    //1. Turnul Chindiei
-    //2. Manastirea Dealu
-    //3. Muzeul de istorie
-    //4. Casa Memoriala Grigore Alecsandrescu
-
+    // TODO:  Implementarea unui adaptor personalizat (cel puțin trei controale vizuale, dintre care două diferite); (1 p.)
+    // TODO:  Utilizarea fișierelor de preferințe pentru salvarea a cel puțin trei setări ale aplicației; (1 p.)
+    // TODO:  Stilizarea aplicației mobile – pentru minim trei proprietăți ale componentelor vizuale -- (se creează o temă nouă în fișierul styles.xml sau stil nou); (0.5 p)
+    // TODO: Rezolvat google maps
+    // TODO:  Utilizarea bazelor de date la distanță (Firebase) (salvare/restaurare); Afișarea informațiilor din
+    //Firebase să se realizeze prin intermediul componentelor vizuale (se pot folosi activitățile anterioare); (0.75 p.)
     private User user;
 
     @Override

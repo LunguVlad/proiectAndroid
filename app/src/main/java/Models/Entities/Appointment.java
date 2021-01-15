@@ -23,6 +23,9 @@ public class Appointment {
     @ColumnInfo(name = "userEmail")
     public String userEmail;
 
+    @ColumnInfo(name = "obiectiv")
+    public String obiectiv;
+
     public int getAppointmentId() {
         return appointmentId;
     }
@@ -33,6 +36,14 @@ public class Appointment {
 
     public String getDate() {
         return date;
+    }
+
+    public String getObiectiv() {
+        return obiectiv;
+    }
+
+    public void setObiectiv(String obiectiv) {
+        this.obiectiv = obiectiv;
     }
 
     public void setDate(String date) {
@@ -55,9 +66,10 @@ public class Appointment {
         this.userEmail = userEmail;
     }
 
-    public Appointment(String date, String time, String userEmail) {
+    public Appointment(String date, String time, String userEmail,String obiectiv) {
         this.date = date;
         this.time = time;
         this.userEmail = userEmail;
+        this.obiectiv = obiectiv;
     }
 }

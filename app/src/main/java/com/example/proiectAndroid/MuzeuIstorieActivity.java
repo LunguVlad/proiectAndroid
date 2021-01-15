@@ -32,6 +32,7 @@ public class MuzeuIstorieActivity extends AppCompatActivity {
     TextView tvw;
     private User user;
     private AppointmentActions appointmentActions;
+   String obiectv = "Muzeul de Istorie";
 
 
     @Override
@@ -131,7 +132,7 @@ public class MuzeuIstorieActivity extends AppCompatActivity {
         EditText editDate = (EditText) findViewById(R.id.editTextDate);
         String date = editDate.getText().toString();
 
-        Appointment appointment = new Appointment(date,time,user.getEmail());
+        Appointment appointment = new Appointment(date,time,user.getEmail(),obiectv);
 
         new InsertAppointmentAsyncTask(appointment,appointmentActions).execute();
 
