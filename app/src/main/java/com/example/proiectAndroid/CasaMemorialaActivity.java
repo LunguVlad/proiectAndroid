@@ -15,7 +15,10 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
+import com.example.proiectAndroid.ParserJSON.ParseJson;
+
 import java.util.Calendar;
+import java.util.List;
 
 import Models.Actions.AppointmentActions;
 import Models.Entities.Appointment;
@@ -91,6 +94,17 @@ public class CasaMemorialaActivity extends AppCompatActivity {
                 timePicker.show();
             }
         });
+        ParseJson parser = new ParseJson(){
+            @Override
+            protected void onPostExecute(List<Double> doubles) {
+                TextView viewTemp = (TextView) findViewById(R.id.textViewTemp);
+                StringBuilder builder = new StringBuilder();
+                builder.append("Minima: ").append(doubles.get(0)).append("Maxima: ").append(doubles.get(1));
+                viewTemp.setText(builder.toString());
+            }
+        };
+
+        parser.execute("https://dataservice.accuweather.com/forecasts/v1/daily/1day/287430?apikey=NSboWDJTJXq8GXZTHmG9Q0tJYxx27y5k&metric=true");
     }
 
 

@@ -62,7 +62,19 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Aici adaugam informatiile despre turn"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         tools:layout_editor_absoluteX="154dp"
         tools:layout_editor_absoluteY="144dp" />
+
+    <TextView
+        android:id="@+id/textViewTemp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        tools:layout_editor_absoluteX="68dp"
+        tools:layout_editor_absoluteY="271dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
