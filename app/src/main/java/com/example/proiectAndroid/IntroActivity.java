@@ -10,11 +10,10 @@ import android.widget.SimpleCursorAdapter;
 import Models.Entities.User;
 
 public class IntroActivity extends AppCompatActivity {
-    // TODO:  Utilizarea fișierelor de preferințe pentru salvarea a cel puțin trei setări ale aplicației; (1 p.) DE TERMINAT
     // TODO:  Stilizarea aplicației mobile – pentru minim trei proprietăți ale componentelor vizuale -- (se creează o temă nouă în fișierul styles.xml sau stil nou); (0.5 p)
-    // TODO: Rezolvat google maps
-    // TODO:  Utilizarea bazelor de date la distanță (Firebase) (salvare/restaurare); Afișarea informațiilor din
+    // TODO:  Utilizarea bazelor de date la distanță (Firebase) (salvare/restaurare); Afișarea informațiilor din + GRAF
     //Firebase să se realizeze prin intermediul componentelor vizuale (se pot folosi activitățile anterioare); (0.75 p.)
+    // TODO: DOCUMENTATIE
     private User user;
 
     @Override

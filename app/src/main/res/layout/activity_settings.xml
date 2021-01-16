@@ -14,7 +14,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Fontsize: "></TextView>
+            android:text="Login page Fontsize: "></TextView>
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -29,12 +29,14 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Remember username "></TextView>
-        <RadioButton
+            android:text="Rate our app "></TextView>
+        <RatingBar
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/radioButton"
-            android:layout_marginLeft="20dp"></RadioButton>
+            android:id="@+id/ratingBar"
+            android:numStars="5"
+            android:stepSize="0.5"></RatingBar>
+
     </LinearLayout>
 
     <LinearLayout

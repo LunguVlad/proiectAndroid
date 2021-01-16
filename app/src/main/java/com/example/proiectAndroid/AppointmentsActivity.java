@@ -43,9 +43,12 @@ public class AppointmentsActivity extends AppCompatActivity {
                 ListView listView = (ListView) findViewById(R.id.listViewAppointments);
                 System.out.println(listView);
                 listView.setAdapter(adapter);
+
+
             }
         }.execute();
 
     }
+
 
 }

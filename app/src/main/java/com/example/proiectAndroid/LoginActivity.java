@@ -11,13 +11,16 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import Models.Actions.UserActions;
@@ -42,6 +45,8 @@ public class LoginActivity extends AppCompatActivity {
         // userDB = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "projectdatabase").build();
 
 
+
+
     }
 
     @Override
@@ -50,10 +55,37 @@ public class LoginActivity extends AppCompatActivity {
 
         try{
             SharedPreferences sharedPreferences = getApplicationContext().getSharedPreferences(getString(R.string.shared_pref),Context.MODE_PRIVATE);
-            Integer fontSize = sharedPreferences.getInt(getString(R.string.font_size),R.integer.font_size);
+            Integer fontSize = sharedPreferences.getInt(getString(R.string.font_size),14);
             String email = sharedPreferences.getString(getString(R.string.email_saved),"");
+
+
+
+
+            //Get views
             EditText editTextEmail = (EditText) findViewById(R.id.editTextTextEmailAddress);
+            EditText editTextPassword = (EditText) findViewById(R.id.editTextTextPassword);
+            Button btnRegister = (Button) findViewById(R.id.btnRegister);
+            Button btnLogin = (Button) findViewById(R.id.btnLogin);
+            Button btnSettings = (Button) findViewById(R.id.button);
+            TextView textViewMessage = (TextView) findViewById(R.id.textView2);
+            RadioButton radioButton = (RadioButton) findViewById(R.id.radioButton2);
+
+
+
+
+
+
+
+            //Set prefrences
             editTextEmail.setText(email);
+            editTextEmail.setTextSize(fontSize);
+            editTextPassword.setTextSize(fontSize);
+            btnRegister.setTextSize(fontSize);
+            btnLogin.setTextSize(fontSize);
+            btnSettings.setTextSize(fontSize);
+            textViewMessage.setTextSize(fontSize);
+            radioButton.setTextSize(fontSize);
+
 
 
         }catch (Exception ex){
@@ -148,7 +180,7 @@ public class LoginActivity extends AppCompatActivity {
 
         RadioButton radioButton = (RadioButton) findViewById(R.id.radioButton2);
         if(radioButton.isChecked()){
-            SharedPreferences sharedPreferences = getApplicationContext().getSharedPreferences("shared-preferences",Context.MODE_PRIVATE);
+            SharedPreferences sharedPreferences = getApplicationContext().getSharedPreferences(getString(R.string.shared_pref),Context.MODE_PRIVATE);
             SharedPreferences.Editor editor = sharedPreferences.edit();
             editor.putString(getString(R.string.email_saved),email);
             editor.apply();
@@ -162,6 +194,13 @@ public class LoginActivity extends AppCompatActivity {
         User user = new User();
         user.setEmail(email);
         user.setPassword(password);
+
+        FirebaseDatabase database = FirebaseDatabase.getInstance("https://proiectdam-247d7-default-rtdb.europe-west1.firebasedatabase.app/");
+        DatabaseReference reference = database.getReference("user");
+
+
+
+        reference.setValue("1234");
 
 
        // mDatabase.child("1").child("email").setValue(user.getEmail());
