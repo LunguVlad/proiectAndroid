@@ -158,50 +158,5 @@ public class ChartActivity extends AppCompatActivity {
             }
 
         });
-
-
-
-
-
-
-
-
-//        AnyChartView anyChartView = findViewById(R.id.any_chart_view);
-//        anyChartView.setProgressBar(findViewById(R.id.progress_bar));
-//
-//        Cartesian cartesian = AnyChart.column();
-//
-//        List<DataEntry> data = new ArrayList<>();
-//        data.add(new ValueDataEntry("Muzeu", 10));
-//        data.add(new ValueDataEntry("Turn", 15));
-//        data.add(new ValueDataEntry("Casa", 5));
-//        data.add(new ValueDataEntry("Manastire ", 20));
-//
-//
-//        Column column = cartesian.column(data);
-//
-//        column.tooltip()
-//                .titleFormat("{%X}")
-//                .position(Position.CENTER_BOTTOM)
-//                .anchor(Anchor.CENTER_BOTTOM)
-//                .offsetX(0d)
-//                .offsetY(5d)
-//                .format("Nr{%Value}{groupsSeparator: }");
-//
-//        cartesian.animation(true);
-//        cartesian.title("Top objectives chosen by tourists");
-//
-//        cartesian.yScale().minimum(0d);
-//
-//        cartesian.yAxis(0).labels().format("Nr{%Value}{groupsSeparator: }");
-//
-//        cartesian.tooltip().positionMode(TooltipPositionMode.POINT);
-//        cartesian.interactivity().hoverMode(HoverMode.BY_X);
-//
-//        cartesian.xAxis(0).title("Objective");
-//        cartesian.yAxis(0).title("Number of visitors");
-//
-//        anyChartView.setChart(cartesian);
-
     }
 }
