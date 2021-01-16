@@ -3,6 +3,7 @@ package com.example.proiectAndroid;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.widget.ListView;
@@ -12,6 +13,7 @@ import java.util.List;
 
 import Models.Actions.AppointmentActions;
 import Models.Entities.Appointment;
+import Models.Entities.User;
 
 public class AppointmentsActivity extends AppCompatActivity {
 
@@ -22,7 +24,10 @@ public class AppointmentsActivity extends AppCompatActivity {
 
         AppointmentActions appointmentActions = new AppointmentActions(this);
 
-        String email = "lmao";
+        Intent it = getIntent();
+        Bundle extras = it.getExtras();
+        User user = (User)extras.get("logged_user");
+        String email = user.getEmail();
 
 
 
