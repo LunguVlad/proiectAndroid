@@ -68,9 +68,4 @@ public class IntroActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void appointmentsListClick(View view) {
-        Intent intent = new Intent(this, AppointmentsActivity.class);
-        intent.putExtra("logged_user",this.user);
-        startActivity(intent);
-    }
 }

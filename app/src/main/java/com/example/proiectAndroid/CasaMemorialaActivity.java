@@ -14,6 +14,7 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import com.example.proiectAndroid.ParserJSON.ParseJson;
 
@@ -34,6 +35,7 @@ public class CasaMemorialaActivity extends AppCompatActivity {
     Button btnGet;
     private User user;
     AppointmentActions appointmentActions;
+    final String obiectv = "Casa Memoriala";
 
 
     @Override
@@ -97,7 +99,7 @@ public class CasaMemorialaActivity extends AppCompatActivity {
                 try {
                     TextView viewTemp = (TextView) findViewById(R.id.textViewTemp);
                     StringBuilder builder = new StringBuilder();
-                    builder.append("Minima: ").append(doubles.get(0)).append("Maxima: ").append(doubles.get(1));
+                    builder.append("Temperatura: ").append(doubles.get(1)).append(" °C ");
                     viewTemp.setText(builder.toString());
                 }catch  (Exception ex){
                     TextView viewTemp = (TextView) findViewById(R.id.textViewTemp);
@@ -106,7 +108,7 @@ public class CasaMemorialaActivity extends AppCompatActivity {
             }
         };
 
-        parser.execute("https://dataservice.accuweather.com/forecasts/v1/daily/1day/287430?apikey=NSboWDJTJXq8GXZTHmG9Q0tJYxx27y5k&metric=true");
+        parser.execute("https://dataservice.accuweather.com/forecasts/v1/daily/1day/272938?apikey=SQe2ERcFZxrYGKxNy7YhVah0iGDKWcVP&language=ro&metric=true");
     }
 
 
@@ -136,7 +138,11 @@ public class CasaMemorialaActivity extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(Integer agentsCount) {
-            System.out.println("Appointment inserted!");
+            Toast.makeText(CasaMemorialaActivity.this, "APPOINTMENT CREATED!", Toast.LENGTH_SHORT).show();
+            EditText editTime = (EditText) findViewById(R.id.editTextTime);
+            EditText editDate = (EditText) findViewById(R.id.editTextDate);
+            editTime.setText("");
+            editDate.setText("");
         }
     }
 
@@ -152,9 +158,16 @@ public class CasaMemorialaActivity extends AppCompatActivity {
         EditText editDate = (EditText) findViewById(R.id.editTextDate);
         String date = editDate.getText().toString();
 
-        Appointment appointment = new Appointment(date,time,user.getEmail(),"Casa Memoriala");
+        if(!time.equals("") && !date.equals("")) {
 
-        new InsertAppointmentAsyncTask(appointment,appointmentActions).execute();
+            Appointment appointment = new Appointment(date, time, user.getEmail(), obiectv);
+
+            new InsertAppointmentAsyncTask(appointment, appointmentActions).execute();
+
+        }else{
+            Toast.makeText(this, "ALL FIELDS MUST BE COMPLETED!", Toast.LENGTH_SHORT).show();
+        }
+
 
     }
 

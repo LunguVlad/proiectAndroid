@@ -92,6 +92,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text=""
+        android:textSize="20dp"
         android:textColor="@color/White"
         app:layout_constraintBottom_toTopOf="@+id/textViewInfoTurn"
         app:layout_constraintEnd_toEndOf="parent"

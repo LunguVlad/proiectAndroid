@@ -116,8 +116,12 @@ public class LoginActivity extends AppCompatActivity {
 //            UserDAO userDAO = userDB.userDao();
 //            userDAO.insert(this.user);
             try {
-                userActions.insertUser(user);
-                return userActions.getUserByEmail(user.getEmail());
+                if(userActions.getUserByEmail(user.getEmail()) == null){
+                    userActions.insertUser(user);
+                    return userActions.getUserByEmail(user.getEmail());
+                }else{
+                   return null;
+                }
             }catch (Exception ex){
                 System.out.println(ex.getMessage());
             }
@@ -126,11 +130,26 @@ public class LoginActivity extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(User user){
-            FirebaseDatabase rootNode = FirebaseDatabase.getInstance("https://proiectdam-2b128-default-rtdb.europe-west1.firebasedatabase.app/");
-            DatabaseReference reference = rootNode.getReference("Users");
+            if(user!=null) {
+                FirebaseDatabase rootNode = FirebaseDatabase.getInstance("https://proiectdam-2b128-default-rtdb.europe-west1.firebasedatabase.app/");
+                DatabaseReference reference = rootNode.getReference("Users");
 
-            reference.child(String.valueOf(user.getUserId())).child("email").setValue(user.getEmail());
-            reference.child(String.valueOf(user.getUserId())).child("password").setValue(user.getPassword());
+                reference.child(String.valueOf(user.getUserId())).child("email").setValue(user.getEmail());
+                reference.child(String.valueOf(user.getUserId())).child("password").setValue(user.getPassword());
+
+                Toast.makeText(LoginActivity.this, "USER REGISTERED", Toast.LENGTH_SHORT).show();
+                EditText editTextEmail = (EditText) findViewById(R.id.editTextTextEmailAddress);
+                EditText editTextPassowrd = (EditText) findViewById(R.id.editTextTextPassword);
+                editTextEmail.setText("");
+                editTextPassowrd.setText("");
+            }
+            else{
+                Toast.makeText(LoginActivity.this, "USER ALREADY EXISTS", Toast.LENGTH_SHORT).show();
+                EditText editTextEmail = (EditText) findViewById(R.id.editTextTextEmailAddress);
+                EditText editTextPassowrd = (EditText) findViewById(R.id.editTextTextPassword);
+                editTextEmail.setText("");
+                editTextPassowrd.setText("");
+            }
         }
     }
 
@@ -140,10 +159,12 @@ public class LoginActivity extends AppCompatActivity {
 
         private UserActions userActions;
         private String email;
+        private String password;
 
-        getUserByEmail(UserActions userActions,String email) {
+        getUserByEmail(UserActions userActions,String email,String password) {
             this.userActions = userActions;
             this.email = email;
+            this.password = password;
         }
 
         @Override
@@ -156,13 +177,17 @@ public class LoginActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(User user) {
             if(user!=null){
-                LoginActivity:user = user;
-                System.out.println("POSTEXEC");
-                Intent it = new Intent(getApplicationContext(),IntroActivity.class);
-                it.putExtra("logged_user", (Parcelable) user);
-                startActivity(it);
+                if(password.equals(user.getPassword())){
+                    LoginActivity:user = user;
+                    System.out.println("POSTEXEC");
+                    Intent it = new Intent(getApplicationContext(),IntroActivity.class);
+                    it.putExtra("logged_user", (Parcelable) user);
+                    startActivity(it);
+                }else{
+                    Toast.makeText(LoginActivity.this, "WRONG EMAIL OR PASSWORD", Toast.LENGTH_SHORT).show();
+                }
             }else{
-                System.out.println("1234");
+                Toast.makeText(LoginActivity.this, "WRONG EMAIL OR PASSWORD", Toast.LENGTH_SHORT).show();
             }
         }
     }
@@ -207,7 +232,7 @@ public class LoginActivity extends AppCompatActivity {
 
 
 
-        new getUserByEmail(userActions,email).execute();
+        new getUserByEmail(userActions,email,password).execute();
     }
 
     public void handleRegisterButton(View view){
