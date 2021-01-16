@@ -14,20 +14,10 @@
         android:hint="Enter Date"
         app:layout_constraintBottom_toTopOf="@+id/buttonCreateAppointment"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.542"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.831" />
 
-    <TextView
-        android:id="@+id/textViewDate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/buttonCreateAppointment"
-        android:layout_marginLeft="100dp"
-        android:layout_marginTop="10dp"
-        android:textStyle="bold"
-        android:textSize="18dp"/>
 
     <EditText
         android:id="@+id/editTextTime"
@@ -38,7 +28,6 @@
         android:hint="Enter Time"
         app:layout_constraintBottom_toBottomOf="@+id/buttonCreateAppointment"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.542"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextDate"
         app:layout_constraintVertical_bias="1.0" />
@@ -55,13 +44,14 @@
         app:layout_constraintHorizontal_bias="0.529"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.976" />
+        app:layout_constraintVertical_bias="0.98" />
 
     <TextView
         android:id="@+id/textViewInfoTurn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Aici adaugam informatiile despre turn"
+        android:text="@string/infoTurn"
+        android:textColor="@color/White"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -73,12 +63,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="showLocation"
-        android:text="Button"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:text="@string/locatie"
+        app:layout_constraintBottom_toTopOf="@+id/editTextDate"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.908"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewInfoTurn"
         app:layout_constraintVertical_bias="0.56" />
 
     <TextView
@@ -86,7 +75,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text=""
-        tools:layout_editor_absoluteX="68dp"
-        tools:layout_editor_absoluteY="271dp" />
+        app:layout_constraintBottom_toTopOf="@+id/textViewInfoTurn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

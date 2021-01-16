@@ -15,7 +15,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Proiect"
+        android:theme="@style/Theme.Theme1"
         >
         <activity android:name=".ChartActivity"></activity>
         <activity android:name=".SettingsActivity" />

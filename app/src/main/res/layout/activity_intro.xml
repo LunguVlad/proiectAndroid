@@ -24,7 +24,7 @@
                 android:layout_gravity="center_horizontal"
                 android:gravity="center"
                 android:text="Turnul Chindiei"
-                android:textColor="#000000"
+                android:textColor="@color/White"
                 android:textSize="100px"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -46,7 +46,7 @@
                 android:layout_gravity="center_horizontal"
                 android:gravity="center"
                 android:text="Muzeul de istorie"
-                android:textColor="#000000"
+                android:textColor="@color/White"
                 android:textSize="100px"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -68,7 +68,7 @@
                 android:layout_gravity="center_horizontal"
                 android:gravity="center"
                 android:text="Casa Memoriala Grigore Alecsandrescu "
-                android:textColor="#000000"
+                android:textColor="@color/White"
                 android:textSize="100px"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -90,7 +90,7 @@
                 android:layout_gravity="center_horizontal"
                 android:gravity="center"
                 android:text="Manastirea Dealu"
-                android:textColor="#000000"
+                android:textColor="@color/White"
                 android:textSize="100px"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -112,7 +112,7 @@
                 android:layout_gravity="center_horizontal"
                 android:gravity="center"
                 android:text="Chart"
-                android:textColor="#000000"
+                android:textColor="@color/White"
                 android:textSize="100px"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -134,51 +134,7 @@
                 android:layout_gravity="center_horizontal"
                 android:gravity="center"
                 android:text="Appointments"
-                android:textColor="#000000"
-                android:textSize="100px"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"></TextView>
-
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="700px"
-            android:orientation="vertical"
-            android:onClick="chartClick">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:gravity="center"
-                android:text="Chart Objectives"
-                android:textColor="#000000"
-                android:textSize="100px"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"></TextView>
-
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="700px"
-            android:orientation="vertical"
-            android:onClick="appointmentsListClick">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:gravity="center"
-                android:text="Appointments list"
-                android:textColor="#000000"
+                android:textColor="@color/White"
                 android:textSize="100px"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"

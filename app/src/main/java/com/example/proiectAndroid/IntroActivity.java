@@ -27,12 +27,14 @@ public class IntroActivity extends AppCompatActivity {
         this.user = user;
 
         super.onCreate(savedInstanceState);
+
+        //this.setTheme(R.style.Theme_Proiect);
         setContentView(R.layout.activity_intro);
 
     }
 
     public void turnClick(View view) {
-        Intent intent = new Intent(this, AppointmentsActivity.class);
+        Intent intent = new Intent(this, TurnulChindieiActivity.class);
         intent.putExtra("logged_user",this.user);
         startActivity(intent);
     }

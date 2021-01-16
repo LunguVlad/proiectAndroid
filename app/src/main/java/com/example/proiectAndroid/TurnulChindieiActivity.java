@@ -39,7 +39,6 @@ public class TurnulChindieiActivity extends AppCompatActivity {
     EditText editTextDate;
     EditText editTextTime;
     Button btnGet;
-    TextView tvw;
     User user;
     AppointmentActions appointmentActions;
 
@@ -57,7 +56,6 @@ public class TurnulChindieiActivity extends AppCompatActivity {
         User user = (User) extras.get("logged_user");
         this.user = user;
 
-        tvw = (TextView) findViewById(R.id.textViewDate);
         editTextDate = (EditText) findViewById(R.id.editTextDate);
         editTextTime = (EditText) findViewById(R.id.editTextTime);
 
@@ -94,7 +92,6 @@ public class TurnulChindieiActivity extends AppCompatActivity {
                     int hour = cldr.get(Calendar.HOUR_OF_DAY);
                     int minutes = cldr.get(Calendar.MINUTE);
 
-                        tvw.setText("Selected Date: " + editTextDate.getText());
 
                         timePicker = new TimePickerDialog(TurnulChindieiActivity.this,
                                 new TimePickerDialog.OnTimeSetListener() {
@@ -110,10 +107,15 @@ public class TurnulChindieiActivity extends AppCompatActivity {
         ParseJson parser = new ParseJson(){
             @Override
             protected void onPostExecute(List<Double> doubles) {
-                TextView viewTemp = (TextView) findViewById(R.id.textViewTemp);
-                StringBuilder builder = new StringBuilder();
-                builder.append("Minima: ").append(doubles.get(0)).append("Maxima: ").append(doubles.get(1));
-                viewTemp.setText(builder.toString());
+                try {
+                    TextView viewTemp = (TextView) findViewById(R.id.textViewTemp);
+                    StringBuilder builder = new StringBuilder();
+                    builder.append("Minima: ").append(doubles.get(0)).append("Maxima: ").append(doubles.get(1));
+                    viewTemp.setText(builder.toString());
+                }catch  (Exception ex){
+                    TextView viewTemp = (TextView) findViewById(R.id.textViewTemp);
+                    viewTemp.setText(R.string.unavailable);
+                }
             }
         };
 
@@ -172,14 +174,14 @@ public class TurnulChindieiActivity extends AppCompatActivity {
 
     public void showLocation(View view){
 
-       // final String locationX="44.932553667977594";
-       // final String locationY="25.458182684544926";
-        //Intent intent = new Intent(this,LocationActivity.class);
-        //intent.putExtra("location_x",locationX);
-        //intent.putExtra("location_y",locationY);
-       // startActivity(intent);
+        final String locationX="44.932553667977594";
+        final String locationY="25.458182684544926";
         Intent intent = new Intent(this,LocationActivity.class);
+        intent.putExtra("location_x",locationX);
+        intent.putExtra("location_y",locationY);
         startActivity(intent);
+//        Intent intent = new Intent(this,LocationActivity.class);
+//        startActivity(intent);
     }
 }
 
