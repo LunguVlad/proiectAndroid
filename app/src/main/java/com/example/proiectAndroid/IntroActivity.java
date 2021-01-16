@@ -31,7 +31,7 @@ public class IntroActivity extends AppCompatActivity {
     }
 
     public void turnClick(View view) {
-        Intent intent = new Intent(this, TurnulChindieiActivity.class);
+        Intent intent = new Intent(this, ChartActivity.class);
         intent.putExtra("logged_user",this.user);
         startActivity(intent);
     }

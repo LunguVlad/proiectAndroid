@@ -21,7 +21,8 @@ import Models.Entities.User;
         @Query("SELECT * FROM appointment WHERE userEmail IN (:userEmail)")
         List<Appointment> getAllByEmail(String userEmail);
 
-        @Insert
+
+    @Insert
         void insertAll(Appointment... appointments);
 
         @Insert(entity = Appointment.class)
