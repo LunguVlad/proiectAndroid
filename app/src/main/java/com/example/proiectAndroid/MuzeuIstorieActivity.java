@@ -152,4 +152,17 @@ public class MuzeuIstorieActivity extends AppCompatActivity {
         new InsertAppointmentAsyncTask(appointment,appointmentActions).execute();
 
     }
+
+    public void showLocation(View view){
+
+
+
+        final double locationX= 44.930957083564465;
+        final double locationY=25.46056833068602;
+        Intent intent = new Intent(this,LocationActivity.class);
+        intent.putExtra("location_x",locationX);
+        intent.putExtra("location_y",locationY);
+        startActivity(intent);
+
+    }
 }

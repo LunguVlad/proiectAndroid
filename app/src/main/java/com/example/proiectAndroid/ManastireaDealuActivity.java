@@ -153,5 +153,19 @@ public class ManastireaDealuActivity extends AppCompatActivity {
 
     }
 
+    public void showLocation(View view){
+
+
+
+
+        final double locationX=44.95917995438181;
+        final double locationY=25.481905477913518;
+        Intent intent = new Intent(this,LocationActivity.class);
+        intent.putExtra("location_x",locationX);
+        intent.putExtra("location_y",locationY);
+        startActivity(intent);
+
+    }
+
 
 }

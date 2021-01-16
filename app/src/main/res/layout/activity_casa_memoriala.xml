@@ -76,4 +76,17 @@
         tools:layout_editor_absoluteX="68dp"
         tools:layout_editor_absoluteY="271dp" />
 
+    <Button
+        android:id="@+id/buttonShowLocation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="showLocation"
+        android:text="Location"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.908"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.56" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

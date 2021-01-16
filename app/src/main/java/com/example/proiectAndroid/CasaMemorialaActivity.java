@@ -155,4 +155,17 @@ public class CasaMemorialaActivity extends AppCompatActivity {
         new InsertAppointmentAsyncTask(appointment,appointmentActions).execute();
 
     }
+
+
+    public void showLocation(View view){
+
+
+        final double locationX=44.92797071866915;
+        final double locationY=25.45657256926189;
+        Intent intent = new Intent(this,LocationActivity.class);
+        intent.putExtra("location_x",locationX);
+        intent.putExtra("location_y",locationY);
+        startActivity(intent);
+
+    }
 }
