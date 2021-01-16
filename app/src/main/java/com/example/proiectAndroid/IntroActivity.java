@@ -32,7 +32,7 @@ public class IntroActivity extends AppCompatActivity {
     }
 
     public void turnClick(View view) {
-        Intent intent = new Intent(this, ChartActivity.class);
+        Intent intent = new Intent(this, AppointmentsActivity.class);
         intent.putExtra("logged_user",this.user);
         startActivity(intent);
     }
@@ -48,6 +48,18 @@ public class IntroActivity extends AppCompatActivity {
     }
     public void manastireClick(View view) {
         Intent intent = new Intent(this, ManastireaDealuActivity.class);
+        intent.putExtra("logged_user",this.user);
+        startActivity(intent);
+    }
+
+    public void chartClick(View view) {
+        Intent intent = new Intent(this, ChartActivity.class);
+        intent.putExtra("logged_user",this.user);
+        startActivity(intent);
+    }
+
+    public void appointmentsClick(View view) {
+        Intent intent = new Intent(this, AppointmentsActivity.class);
         intent.putExtra("logged_user",this.user);
         startActivity(intent);
     }
