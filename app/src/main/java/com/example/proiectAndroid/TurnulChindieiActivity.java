@@ -183,8 +183,8 @@ public class TurnulChindieiActivity extends AppCompatActivity {
 
     public void showLocation(View view){
 
-        final String locationX="44.932553667977594";
-        final String locationY="25.458182684544926";
+        final double locationX=44.932553667977594;
+        final double locationY=25.458182684544926;
         Intent intent = new Intent(this,LocationActivity.class);
         intent.putExtra("location_x",locationX);
         intent.putExtra("location_y",locationY);

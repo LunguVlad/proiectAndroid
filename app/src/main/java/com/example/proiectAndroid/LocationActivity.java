@@ -27,8 +27,8 @@ public class LocationActivity extends FragmentActivity implements OnMapReadyCall
 
         Intent it =  getIntent();
         Bundle extras =  it.getExtras();
-        this.X = (double) extras.get("location_x");
-        this.Y = (double) extras.get("location_y");
+        this.X = (Double)extras.get("location_x") ;
+        this.Y = (Double) extras.get("location_y") ;
 
 
         setContentView(R.layout.activity_location);
